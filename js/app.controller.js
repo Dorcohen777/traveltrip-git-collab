@@ -12,8 +12,9 @@ window.onGoClick = onGoClick
 function onInit() {
     onInitMap()
     renderLocations()
-    const pos = mapService.getInputPos()
-    console.log('pos', pos)
+    mapService.getInputPos()
+        .then(console.log)
+
 }
 
 function onInitMap(lat = 32.0749831, lng = 34.9120554) {

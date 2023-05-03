@@ -5,7 +5,7 @@ export const mapService = {
     getInputPos,
 }
 
-// const API_KEY = 'AIzaSyDTBlLlarVlkY3cj0CzbExexK_8GLZvoFc'
+const API_KEY = 'AIzaSyDTBlLlarVlkY3cj0CzbExexK_8GLZvoFc'
 
 // Var that is used throughout this Module (not global)
 let gMap
@@ -56,7 +56,12 @@ function _connectGoogleApi() {
 }
 
 
-function getInputPos(){
+function getInputPos() {
+    return axios.get(_getUrl())
+        .then((res) =>res.data.results[0].geometry.location)
+}
+
+function _getUrl() {
     return `
     https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${API_KEY}
     `
