@@ -5,7 +5,7 @@ export const mapService = {
     getInputPos,
 }
 
-const API_KEY = 'AIzaSyDTBlLlarVlkY3cj0CzbExexK_8GLZvoFc'
+// const API_KEY = 'AIzaSyDTBlLlarVlkY3cj0CzbExexK_8GLZvoFc'
 
 // Var that is used throughout this Module (not global)
 let gMap

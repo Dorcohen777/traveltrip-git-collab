@@ -164,6 +164,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left:50%;
+    max-width: 50%;
     gap: 2rem;
     padding: 2rem;
     background-color: #1c2322;
@@ -199,6 +201,15 @@ header {
         padding: 3rem 0;
     }
 
+    .actions-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 50%;
+        gap: 2rem;
+        padding: 2rem;
+        background-color: #1c2322;
+    }
     
 }
 
