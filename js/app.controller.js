@@ -80,7 +80,21 @@ function onMapClick() {
 
 
 function renderLocations() {
+    var strLocation = ''
+
     const locs = locService.getLocs()
-        .then((locations) => console.log('locations', locations))
-    // console.log('locs', locs)
+        .then((locations) => {
+            return locations.map((location) => {
+                strLocation+= `
+                    <div>
+                        <h3> ${location.placeName}</h3>
+                        <button onclick="onGoClick(${location.lat}, ${location.lng})"> Go </button>
+                        <button onclick="onDeleteClick()"> Delete </button>
+                    </div>
+                `
+                const elLocs = document.querySelector('.locs')
+                elLocs.innerHTML = strLocation
+            })
+            // console.log('locations form control', location)
+        })
 }
