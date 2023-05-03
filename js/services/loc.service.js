@@ -29,14 +29,9 @@ function removeLoc(locId){
     })
 }
 
-
-
-
 function saveLoc(loc) {
     console.log('loc', loc)
-
     // locs.push(loc)
-
     storageService.post(LOCS_DATA_KEY, loc)
 
 }
