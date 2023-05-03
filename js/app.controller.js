@@ -11,12 +11,11 @@ window.onMapClick = onMapClick
 window.onGoClick = onGoClick
 window.onDeleteClick = onDeleteClick
 window.onSearch = onSearch
+window.renderWeather = renderWeather
 
 function onInit() {
     onInitMap()
     renderLocations()
-
-
 }
 
 function onInitMap(lat = 32.0749831, lng = 34.9120554) {
@@ -24,9 +23,29 @@ function onInitMap(lat = 32.0749831, lng = 34.9120554) {
         .then(map => {
             console.log('Map is ready')
             addEventListener(map)
+
         })
         .catch(() => console.log('Error: cannot init map'))
     // .then(render)
+}
+
+function renderWeather(lat, lng) {
+    var weatherStr = ''
+    
+    mapService.getWeather(lat, lng)
+        .then((data) => {
+            console.log('data', data)
+            weatherStr += `
+            <div>
+                <h2> ${data.temp} °C</h2>
+            </div>
+            `
+        const elDivTemp = document.querySelector('.div-temp')
+        elDivTemp.innerHTML = weatherStr
+        })
+        .catch((err) => {
+            console.log('err', err)
+        })
 }
 
 function addEventListener(map) {
@@ -38,6 +57,7 @@ function addEventListener(map) {
         console.log('lng', lng)
         console.log('placeName', placeName)
         locService.saveLoc({ placeName, lat, lng })
+        renderWeather(lat, lng)
         renderLocations()
     })
 }
@@ -94,6 +114,8 @@ function onMapClick() {
     const map = document.getElementById('map')
     console.log('map', map)
 }
+
+
 
 
 function renderLocations() {

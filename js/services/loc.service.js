@@ -30,6 +30,8 @@ function removeLoc(locId){
 }
 
 
+
+
 function saveLoc(loc) {
     console.log('loc', loc)
 

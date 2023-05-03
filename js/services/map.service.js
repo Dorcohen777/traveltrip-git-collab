@@ -3,9 +3,11 @@ export const mapService = {
     addMarker,
     panTo,
     getInputPos,
+    getWeather,
 }
 
-// const API_KEY = 'AIzaSyDTBlLlarVlkY3cj0CzbExexK_8GLZvoFc'
+const API_KEY = 'AIzaSyDTBlLlarVlkY3cj0CzbExexK_8GLZvoFc'
+const API_KEY_WEATHER = 'f594a60010cb732310a540b945bb6852'
 
 // Var that is used throughout this Module (not global)
 let gMap
@@ -53,6 +55,11 @@ function _connectGoogleApi() {
         elGoogleApi.onload = resolve
         elGoogleApi.onerror = () => reject('Google script failed to load')
     })
+}
+
+function getWeather(lat, lng){
+    return axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${API_KEY_WEATHER}`)
+        .then((res) => res.data.main)
 }
 
 
