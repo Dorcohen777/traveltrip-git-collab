@@ -10,12 +10,12 @@ window.onGetUserPos = onGetUserPos
 window.onMapClick = onMapClick
 window.onGoClick = onGoClick
 window.onDeleteClick = onDeleteClick
+window.onSearch = onSearch
 
 function onInit() {
     onInitMap()
     renderLocations()
-    mapService.getInputPos()
-        .then(console.log)
+
 
 }
 
@@ -41,6 +41,16 @@ function addEventListener(map) {
         renderLocations()
     })
 }
+
+function onSearch() {
+    const value = document.querySelector('.input-search').value
+    console.log('value', value)
+    if (!value) return
+
+    mapService.getInputPos(value)
+        .then((pos) => onInitMap(pos.lat, pos.lng))
+}
+
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
 function getPosition() {
@@ -88,7 +98,7 @@ function onMapClick() {
 
 function renderLocations() {
     var strLocation = ''
-    
+
     const locs = locService.getLocs()
         .then((locations) => {
             const elLocs = document.querySelector('.locs')
@@ -103,7 +113,7 @@ function renderLocations() {
                         <button onclick="onGoClick(${location.lat}, ${location.lng})"> Go </button>
                         <button onclick="onDeleteClick('${location.id}')"> Delete </button>
                     </div>
-                ` 
+                `
                 elLocs.innerHTML = strLocation
             })
             // console.log('locations form control', location)
@@ -114,8 +124,8 @@ function onGoClick(lat, lng) {
     onInitMap(lat, lng)
 }
 
-function onDeleteClick(locationId){
+function onDeleteClick(locationId) {
     locService.removeLoc(locationId)
-    .then(() => renderLocations())
-    
+        .then(() => renderLocations())
+
 }
