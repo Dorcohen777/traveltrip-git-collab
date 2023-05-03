@@ -1,6 +1,7 @@
 export const locService = {
     getLocs,
     saveLoc,
+    removeLoc,
 }
 import { storageService } from './async-storage.service.js'
 
@@ -16,6 +17,15 @@ function getLocs() {
         setTimeout(() => {
             resolve(storageService.query(LOCS_DATA_KEY))
         }, 2000)
+    })
+}
+
+// handle remove location button
+function removeLoc(locId){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(storageService.remove(LOCS_DATA_KEY, locId))
+        }, 2000);
     })
 }
 
