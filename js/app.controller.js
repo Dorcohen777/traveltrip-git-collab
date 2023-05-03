@@ -6,6 +6,7 @@ window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
+window.onMapClick = onMapClick
 
 function onInit() {
     mapService.initMap()
@@ -50,4 +51,10 @@ function onGetUserPos() {
 function onPanTo() {
     console.log('Panning the Map')
     mapService.panTo(35.6895, 139.6917)
+}
+
+function onMapClick() {
+    const map = document.getElementById('map')
+    console.log('map', map)
+
 }
