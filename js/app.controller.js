@@ -40,7 +40,7 @@ function renderWeather(lat, lng) {
                 <h2> ${data.temp} °C</h2>
             </div>
             `
-        const elDivTemp = document.querySelector('.div-temp')
+        const elDivTemp = document.querySelector('.span-temp')
         elDivTemp.innerHTML = weatherStr
         })
         .catch((err) => {

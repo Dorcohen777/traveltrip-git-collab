@@ -21,8 +21,10 @@ function initMap(lat, lng) {
             gMap = new google.maps.Map(
                 document.querySelector('#map'), {
                 center: { lat, lng },
-                zoom: 15
+                zoom: 15,
+                
             })
+            addMarker({lat, lng})
             console.log('Map!', gMap)
             return gMap
 
