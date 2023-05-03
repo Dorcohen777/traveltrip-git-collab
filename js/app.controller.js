@@ -12,6 +12,8 @@ window.onGoClick = onGoClick
 function onInit() {
     onInitMap()
     renderLocations()
+    const pos = mapService.getInputPos()
+    console.log('pos', pos)
 }
 
 function onInitMap(lat = 32.0749831, lng = 34.9120554) {
@@ -64,7 +66,7 @@ function onGetUserPos() {
             console.log('User position is:', pos.coords)
             document.querySelector('.user-pos').innerText =
                 `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
-                onInitMap(pos.coords.latitude,pos.coords.longitude)
+            onInitMap(pos.coords.latitude, pos.coords.longitude)
         })
         .catch(err => {
             console.log('err!!!', err)
@@ -87,7 +89,7 @@ function renderLocations() {
     const locs = locService.getLocs()
         .then((locations) => {
             return locations.map((location) => {
-                strLocation+= `
+                strLocation += `
                     <div>
                         <h3> ${location.placeName}</h3>
                         <button onclick="onGoClick(${location.lat}, ${location.lng})"> Go </button>
@@ -101,6 +103,6 @@ function renderLocations() {
         })
 }
 
-function onGoClick(lat, lng){
+function onGoClick(lat, lng) {
     onInitMap(lat, lng)
 }

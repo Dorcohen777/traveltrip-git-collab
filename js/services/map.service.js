@@ -1,9 +1,11 @@
 export const mapService = {
     initMap,
     addMarker,
-    panTo
+    panTo,
+    getInputPos,
 }
 
+// const API_KEY = 'AIzaSyDTBlLlarVlkY3cj0CzbExexK_8GLZvoFc'
 
 // Var that is used throughout this Module (not global)
 let gMap
@@ -42,8 +44,6 @@ function panTo(lat, lng) {
 
 function _connectGoogleApi() {
     if (window.google) return Promise.resolve()
-    //TODO: Enter your API Key
-    const API_KEY = 'AIzaSyDTBlLlarVlkY3cj0CzbExexK_8GLZvoFc'
     var elGoogleApi = document.createElement('script')
     elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`
     elGoogleApi.async = true
@@ -55,3 +55,9 @@ function _connectGoogleApi() {
     })
 }
 
+
+function getInputPos(){
+    return `
+    https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${API_KEY}
+    `
+}
