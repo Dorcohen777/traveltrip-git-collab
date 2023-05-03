@@ -1,13 +1,213 @@
-body{
+body {
     box-sizing: border-box;
     font-family: sans-serif;
     padding: 0;
     margin: 0;
 }
 
-.main-nav{
+/* START Nav section design */
+header {
+    background-color: #1c2322;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.main-nav h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.div-search {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+}
+
+.input-search {
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    font-size: 16px;
+}
+
+.btn-search {
+    padding: 10px 20px;
+    background-color: #fff;
+    border: none;
+    border-radius: 20px;
+    color: #1abc9c;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-user-pos {
+    padding: 10px 20px;
+    background-color: #fff;
+    border: none;
+    border-radius: 20px;
+    color: #1abc9c;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-user-pos:hover,
+.btn-search:hover {
+    background-color: #1abc9c;
+    color: #fff;
+}
+
+/* END Nav section design */
+
+/* START current section design */
+.div-location-info {
+    background-color: #ffffff;
+    border: 2px solid #1c2322;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.div-location-info p {
+    margin: 0;
+    font-size: 32px;
+    color: #1c2322;
+}
+
+.div-location-info button {
+    background-color: #1abc9c;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.div-location-info button:hover {
+    background-color: #131414;
+}
+
+.div-location-info .user-pos {
+    color: #0077cc;
+    font-weight: bold;
+}
+
+/* END current section design */
+
+/* START of map design */
+
+.map-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 300px 300px;
+    gap: 20px;
+}
+
+.div-weather {
+    max-width: 100%;
+    text-align: center;
+    background-color: rgb(108, 108, 197);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-weather h2 {
+    font-size: 24px;
+    color: #ffffff;
+    margin: 0;
+}
+
+.map-area {
+    width: 100%;
+    height: 100%;
+}
+
+.div-locations {
+    text-align: center;
+    background-color: #ffffff;
+    border: 2px solid rgb(108, 108, 197);
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-locations p {
+    margin: 0;
+    font-size: 16px;
+    color: rgb(108, 108, 197);
+}
+
+.locs {
+    font-size: 14px;
+    font-family: monospace;
+    margin: 0;
+}
+
+/* END of map design */
+
+/* START of action design */
+
+.actions-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #1c2322;
+}
+
+.actions-section button {
+    padding: 0.8rem;
+    background-color: #fff;
+    color: #1abc9c;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.actions-section button:hover {
+    background-color: #1abc9c;
+    color: #fff;
+}
+
+/* END of action design */
+
+/* Start of Responsive  */
+
+
+@media (max-width: 1000px) {
+    .map-section{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    .div-weather {
+        padding: 3rem 0;
+    }
+
+    
+}
+
+/* End of Responsive  */
