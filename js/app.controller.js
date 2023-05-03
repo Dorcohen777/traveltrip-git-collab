@@ -68,7 +68,10 @@ function onSearch() {
     if (!value) return
 
     mapService.getInputPos(value)
-        .then((pos) => onInitMap(pos.lat, pos.lng))
+        .then((pos) => {
+            onInitMap(pos.lat, pos.lng)
+            renderWeather(pos.lat, pos.lng)
+        })
 }
 
 
@@ -144,6 +147,7 @@ function renderLocations() {
 
 function onGoClick(lat, lng) {
     onInitMap(lat, lng)
+    renderWeather(lat, lng)
 }
 
 function onDeleteClick(locationId) {
