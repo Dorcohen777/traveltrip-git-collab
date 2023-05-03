@@ -7,9 +7,11 @@ window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 window.onMapClick = onMapClick
+window.onGoClick = onGoClick
 
 function onInit() {
     onInitMap()
+    renderLocations()
 }
 
 function onInitMap(lat = 32.0749831, lng = 34.9120554) {
@@ -97,4 +99,8 @@ function renderLocations() {
             })
             // console.log('locations form control', location)
         })
+}
+
+function onGoClick(lat, lng){
+    onInitMap(lat, lng)
 }
