@@ -14,7 +14,7 @@ const locs = [
 function getLocs() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(locs)
+            resolve(storageService.query(LOCS_DATA_KEY))
         }, 2000)
     })
 }

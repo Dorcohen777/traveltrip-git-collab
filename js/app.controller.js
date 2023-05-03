@@ -74,5 +74,7 @@ function onMapClick() {
 
 
 function renderLocations() {
-    const locs = getLocs()
+    const locs = locService.getLocs()
+        .then((locations)=>console.log('locations', locations))
+    // console.log('locs', locs)
 }
