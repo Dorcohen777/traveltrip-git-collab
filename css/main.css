@@ -127,7 +127,7 @@ header {
     background-color: rgb(108, 108, 197);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .div-weather h2 {
@@ -141,8 +141,9 @@ header {
     height: 100%;
 }
 
-.div-locations p{
+.div-locations h2{
     font-size: 1.5rem;
+    text-align: center;
 }
 
 .location{
