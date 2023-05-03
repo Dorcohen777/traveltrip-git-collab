@@ -141,12 +141,19 @@ header {
     height: 100%;
 }
 
-.div-locations{
-    display: grid;
-    grid-template-columns: 1fr;
-    
+.div-locations p{
+    font-size: 1.5rem;
 }
 
+.location{
+    display: flex;
+    align-items: center;
+    gap:0.5rem;
+}
+
+.location h3{
+    font-size: 1rem;
+}
 
 
 /* END of map design */

@@ -88,7 +88,7 @@ function renderLocations() {
         .then((locations) => {
             return locations.map((location) => {
                 strLocation+= `
-                    <div>
+                    <div class="location">
                         <h3> ${location.placeName}</h3>
                         <button onclick="onGoClick(${location.lat}, ${location.lng})"> Go </button>
                         <button onclick="onDeleteClick()"> Delete </button>
