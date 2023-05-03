@@ -142,14 +142,10 @@ header {
 }
 
 .div-locations {
-    text-align: center;
+    
+    text-align: left;
     background-color: #ffffff;
     border: 2px solid rgb(108, 108, 197);
-    border-radius: 5px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .div-locations p {
@@ -158,11 +154,7 @@ header {
     color: rgb(108, 108, 197);
 }
 
-.locs {
-    font-size: 14px;
-    font-family: monospace;
-    margin: 0;
-}
+
 
 /* END of map design */
 
