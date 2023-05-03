@@ -9,25 +9,30 @@ window.onGetUserPos = onGetUserPos
 window.onMapClick = onMapClick
 
 function onInit() {
-    mapService.initMap()
+    onInitMap()
+}
+
+function onInitMap(lat = 32.0749831, lng = 34.9120554) {
+    mapService.initMap(lat, lng)
         .then(map => {
             console.log('Map is ready')
-
-            map.addListener("click", (mapsMouseEvent) => {
-                const placeName = prompt('Enter Place Name')
-                const lat = mapsMouseEvent.latLng.lat()
-                const lng = mapsMouseEvent.latLng.lng()
-                console.log('lat', lat)
-                console.log('lng', lng)
-                console.log('placeName', placeName)
-                locService.saveLoc({ placeName, lat, lng })
-                renderLocations()
-            })
-
-
+            addEventListener(map)
         })
         .catch(() => console.log('Error: cannot init map'))
     // .then(render)
+}
+
+function addEventListener(map) {
+    map.addListener("click", (mapsMouseEvent) => {
+        const placeName = prompt('Enter Place Name')
+        const lat = mapsMouseEvent.latLng.lat()
+        const lng = mapsMouseEvent.latLng.lng()
+        console.log('lat', lat)
+        console.log('lng', lng)
+        console.log('placeName', placeName)
+        locService.saveLoc({ placeName, lat, lng })
+        renderLocations()
+    })
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -57,6 +62,7 @@ function onGetUserPos() {
             console.log('User position is:', pos.coords)
             document.querySelector('.user-pos').innerText =
                 `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
+                onInitMap(pos.coords.latitude,pos.coords.longitude)
         })
         .catch(err => {
             console.log('err!!!', err)
@@ -75,6 +81,6 @@ function onMapClick() {
 
 function renderLocations() {
     const locs = locService.getLocs()
-        .then((locations)=>console.log('locations', locations))
+        .then((locations) => console.log('locations', locations))
     // console.log('locs', locs)
 }
