@@ -10,10 +10,35 @@ window.onMapClick = onMapClick
 
 function onInit() {
     mapService.initMap()
-        .then(() => {
+        .then(map => {
             console.log('Map is ready')
+
+            map.addListener("click", (mapsMouseEvent) => {
+                // gInfoWindow.close()
+                // gInfoWindow = new google.maps.InfoWindow({
+                //     position: mapsMouseEvent.latLng,
+                // })
+                // gInfoWindow.setContent(
+                //     JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+                // )
+                // gInfoWindow.open(map)
+
+
+                const placeName = prompt('Enter Place Name')
+                const lat = mapsMouseEvent.latLng.lat()
+                const lng = mapsMouseEvent.latLng.lng()
+                console.log('lat', lat)
+                console.log('lng', lng)
+                console.log('placeName', placeName)
+                locService.saveLoc({ placeName, lat, lng })
+
+
+            })
+
+
         })
         .catch(() => console.log('Error: cannot init map'))
+        // .then(render)
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition

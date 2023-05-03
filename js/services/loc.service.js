@@ -1,10 +1,13 @@
 export const locService = {
-    getLocs
+    getLocs,
+    saveLoc,
 }
+import { storageService } from './async-storage.service.js'
 
+const LOCS_DATA_KEY = 'locsDB'
 
 const locs = [
-    { name: 'Greatplace', lat: 32.047104, lng: 34.832384 }, 
+    { name: 'Greatplace', lat: 32.047104, lng: 34.832384 },
     { name: 'Neveragain', lat: 32.047201, lng: 34.832581 }
 ]
 
@@ -16,4 +19,13 @@ function getLocs() {
     })
 }
 
+
+function saveLoc(loc) {
+    console.log('loc', loc)
+
+    // locs.push(loc)
+
+    storageService.post(LOCS_DATA_KEY, loc)
+
+}
 
