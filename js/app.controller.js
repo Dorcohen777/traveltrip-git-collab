@@ -1,6 +1,7 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 
+
 window.onload = onInit
 window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
@@ -8,6 +9,7 @@ window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 window.onMapClick = onMapClick
 window.onGoClick = onGoClick
+window.onDeleteClick = onDeleteClick
 
 function onInit() {
     onInitMap()
@@ -86,18 +88,22 @@ function onMapClick() {
 
 function renderLocations() {
     var strLocation = ''
-
+    
     const locs = locService.getLocs()
         .then((locations) => {
+            const elLocs = document.querySelector('.locs')
+
+            if (locations.length < 1) elLocs.innerHTML = ''
+
             return locations.map((location) => {
+                console.log('location from MAP', location)
                 strLocation += `
-                    <div>
+                    <div class="location">
                         <h3> ${location.placeName}</h3>
                         <button onclick="onGoClick(${location.lat}, ${location.lng})"> Go </button>
-                        <button onclick="onDeleteClick()"> Delete </button>
+                        <button onclick="onDeleteClick('${location.id}')"> Delete </button>
                     </div>
-                `
-                const elLocs = document.querySelector('.locs')
+                ` 
                 elLocs.innerHTML = strLocation
             })
             // console.log('locations form control', location)
@@ -106,4 +112,10 @@ function renderLocations() {
 
 function onGoClick(lat, lng) {
     onInitMap(lat, lng)
+}
+
+function onDeleteClick(locationId){
+    locService.removeLoc(locationId)
+    .then(() => renderLocations())
+    
 }
