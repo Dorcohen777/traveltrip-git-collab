@@ -14,16 +14,6 @@ function onInit() {
             console.log('Map is ready')
 
             map.addListener("click", (mapsMouseEvent) => {
-                // gInfoWindow.close()
-                // gInfoWindow = new google.maps.InfoWindow({
-                //     position: mapsMouseEvent.latLng,
-                // })
-                // gInfoWindow.setContent(
-                //     JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-                // )
-                // gInfoWindow.open(map)
-
-
                 const placeName = prompt('Enter Place Name')
                 const lat = mapsMouseEvent.latLng.lat()
                 const lng = mapsMouseEvent.latLng.lng()
@@ -31,14 +21,13 @@ function onInit() {
                 console.log('lng', lng)
                 console.log('placeName', placeName)
                 locService.saveLoc({ placeName, lat, lng })
-
-
+                renderLocations()
             })
 
 
         })
         .catch(() => console.log('Error: cannot init map'))
-        // .then(render)
+    // .then(render)
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -81,5 +70,9 @@ function onPanTo() {
 function onMapClick() {
     const map = document.getElementById('map')
     console.log('map', map)
+}
 
+
+function renderLocations() {
+    const locs = getLocs()
 }
